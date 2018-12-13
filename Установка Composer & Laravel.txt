@@ -1,0 +1,31 @@
+Нужен Open Server
+Composer:
+1. Создаем в директории проекта файл - composer.json
+1.1 Вводим: 
+{
+  "require": {},
+  "autoload": {
+    "psr-4": {
+    }
+  }
+}
+2. В OS запускаем консоль и вводим - composer install
+Laravel:
+3. Далее также в консоле вводим - composer global require "laravel/installer"
+4. composer create-project --prefer-dist laravel/laravel blog
+После выполнения команды появится папка blog, в которой будут исходные файлы проекта
+Корневой папкой сайта будет blog/public
+5. Редактировать .env (прежде создать бд)
+6. php artisan migrate:install
+6.1 app/providers/appserviceprovider:  
+public function boot()
+    {
+        Schema::defaultStringLength(191);
+    }
+7. php artisan migrate
+8. php artisan migrate:fresh
+9. https://laravelcollective.com/docs/master/html
+10. https://github.com/cviebrock/eloquent-sluggable#installation
+11. https://xdebug.org/wizard.php
+
+	
