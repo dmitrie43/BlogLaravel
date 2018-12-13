@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'HomeController@index');
+Route::get('/developer', 'DeveloperController@index');
 
 Auth::routes();
 

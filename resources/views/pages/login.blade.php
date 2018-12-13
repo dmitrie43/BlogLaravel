@@ -30,8 +30,7 @@
                                            placeholder="password">
                                 </div>
                             </div>
-                            <button type="submit" class="btn send-btn">Login</button>
-
+                            <button name="button" type="submit" class="btn send-btn">Login</button>
                         </form>
                     </div><!--end leave comment-->
                 </div>

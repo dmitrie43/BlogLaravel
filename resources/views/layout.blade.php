@@ -38,7 +38,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html"><img src="/img/logo.png" alt=""></a>
+                <a class="navbar-brand" href="/"><img src="/img/logo.png" alt=""></a>
             </div>
 
 
@@ -46,8 +46,7 @@
 
                 <ul class="nav navbar-nav text-uppercase">
                     <li><a href="/">Homepage</a></li>
-                    <li><a href="/">ABOUT ME </a></li>
-                    <li><a href="/">CONTACT</a></li>
+                    <li><a href="{{ url('developer') }}">Developer</a></li>
                 </ul>
 
                 <ul class="nav navbar-nav text-uppercase pull-right">
