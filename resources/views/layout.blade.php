@@ -15,7 +15,7 @@
 
     <!-- HTML5 shim and Respond.js IE9 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-    <!--<script src="assets/js/html5shiv.js"></script>-->
+    <script src="assets/js/html5shiv.js"></script>-->
     <!--<script src="assets/js/respond.js"></script>-->
     <!--[endif]-->
 
