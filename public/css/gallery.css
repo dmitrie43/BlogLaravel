@@ -1,0 +1,65 @@
+.table-gallery {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 4px;
+}
+
+.table-gallery img {
+    border: 8px solid #fff;
+    border-bottom: 20px solid #fff;
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+}
+
+.table-gallery tr {
+
+}
+
+.table-gallery td {
+
+}
+
+.table-gallery td img {
+    opacity: 0.4;
+}
+
+.table-gallery td img:hover {
+    opacity: 1;
+    transition-duration: 0.2s;
+    transform: rotate(15deg);
+}
+
+.gallery-main img {
+    border: 8px solid #fff;
+    height: 100%;
+    width: 100%;
+}
+
+.is-active {
+    border-radius: 10%;
+    animation: roll 5s linear infinite;
+}
+
+@keyframes roll {
+    20% {
+        transform: rotate3d(0, 0, 1, 5deg);
+        box-shadow: 0 0 10px rgb(255, 254, 0);
+    }
+    40% {
+        transform: rotate3d(0, 0, 1, -5deg);
+        box-shadow: 0 0 10px rgb(250, 44, 0);
+    }
+    60% {
+        transform: rotate3d(0, 0, 1, 2.5deg);
+        box-shadow: 0 0 10px rgb(254, 0, 222);
+    }
+    80% {
+        transform: rotate3d(0, 0, 1, -2.5deg);
+        box-shadow: 0 0 10px rgb(1, 29, 255);
+    }
+    100% {
+        transform: rotate3d(0, 0, 1, 0deg);
+        box-shadow: 0 0 10px rgb(0, 255, 68);
+    }
+}
