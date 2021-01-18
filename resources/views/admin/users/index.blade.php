@@ -56,6 +56,13 @@
                                     </button>
                                     {{Form::close( )}}
                                 </td>
+                                <td>
+                                    @if($user->is_admin == 1)
+                                        <a href="/admin/users/toggle/{{$user->id}}" class="fa">Убрать полномочия админа</a>
+                                    @else
+                                        <a href="/admin/users/toggle/{{$user->id}}" class="fa">Сделать админом</a>
+                                    @endif
+                                </td>
                             </tr>
                         @endforeach
                         </tfoot>

@@ -11,6 +11,7 @@
 
     <!-- common css -->
 
+    <link rel="stylesheet" href="/css/gallery.css">
     <link rel="stylesheet" href="/css/front.css">
 
     <!-- HTML5 shim and Respond.js IE9 support of HTML5 elements and media queries -->
@@ -47,6 +48,10 @@
                 <ul class="nav navbar-nav text-uppercase">
                     <li><a href="/">Homepage</a></li>
                     <li><a href="{{ url('developer') }}">Developer</a></li>
+                    @if(\App\User::isAdmin())
+                        <li><a href="/admin">Admin-Panel</a></li>
+                        <li><a href="/gallery">Gallery</a></li>
+                    @endif
                 </ul>
 
                 <ul class="nav navbar-nav text-uppercase pull-right">
@@ -74,46 +79,13 @@
     </div>
     <!-- /.container-fluid -->
 </nav>
-    @if(session('status'))
-        <div class="alert alert-success">
-            {{session('status')}}
-        </div>
-    @endif
-    @yield('content')
+
+@yield('content')
 
 <!--footer start-->
 <div id="footer">
     <div class="footer-instagram-section">
-        <h3 class="footer-instagram-title text-center text-uppercase">Instagram</h3>
-
-        <div id="footer-instagram" class="owl-carousel">
-
-            <div class="item">
-                <a href="#"><img src="/img/ins-1.jpg" alt=""></a>
-            </div>
-            <div class="item">
-                <a href="#"><img src="/img/ins-2.jpg" alt=""></a>
-            </div>
-            <div class="item">
-                <a href="#"><img src="/img/ins-3.jpg" alt=""></a>
-            </div>
-            <div class="item">
-                <a href="#"><img src="/img/ins-4.jpg" alt=""></a>
-            </div>
-            <div class="item">
-                <a href="#"><img src="/img/ins-5.jpg" alt=""></a>
-            </div>
-            <div class="item">
-                <a href="#"><img src="/img/ins-6.jpg" alt=""></a>
-            </div>
-            <div class="item">
-                <a href="#"><img src="/img/ins-7.jpg" alt=""></a>
-            </div>
-            <div class="item">
-                <a href="#"><img src="/img/ins-8.jpg" alt=""></a>
-            </div>
-
-        </div>
+        <h3 class="footer-instagram-title text-center text-uppercase"></h3>
     </div>
 </div>
 
@@ -123,93 +95,91 @@
             <div class="col-md-4">
                 <aside class="footer-widget">
                     <div class="about-img"><img src="/img/footer-logo.png" alt=""></div>
-                    <div class="about-content">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                        eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed voluptua. At vero eos et
-                        accusam et justo duo dlores et ea rebum magna text ar koto din.
+                    <div class="about-content">Blog Info
                     </div>
                     <div class="address">
                         <h4 class="text-uppercase">contact Info</h4>
 
-                        <p> 142/5 BC Street, ES, VSA</p>
+                        <p> Russia, Ulyanovsk </p>
 
                         <p> Phone: +123 456 78900</p>
 
-                        <p>rahim@marlindev.ru</p>
+                        <p>dmitrie43@mail.ru</p>
                     </div>
                 </aside>
             </div>
 
             <div class="col-md-4">
                 <aside class="footer-widget">
-                    <h3 class="widget-title text-uppercase">Testimonials</h3>
+                    <h3 class="widget-title text-uppercase">Site Map</h3>
 
-                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                        <!--Indicator-->
-                        <ol class="carousel-indicators">
-                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                            <li data-target="#myCarousel" data-slide-to="1"></li>
-                            <li data-target="#myCarousel" data-slide-to="2"></li>
-                        </ol>
-                        <div class="carousel-inner" role="listbox">
-                            <div class="item active">
-                                <div class="single-review">
-                                    <div class="review-text">
-                                        <p>Lorem ipsum dolor sit amet, conssadipscing elitr, sed diam nonumy eirmod
-                                            tempvidunt ut labore et dolore magna aliquyam erat,sed diam voluptua. At
-                                            vero eos et accusam justo duo dolores et ea rebum.gubergren no sea takimata
-                                            magna aliquyam eratma</p>
-                                    </div>
-                                    <div class="author-id">
-                                        <img src="/img/author.png" alt="">
+{{--                    <div id="myCarousel" class="carousel slide" data-ride="carousel">--}}
+{{--                        <!--Indicator-->--}}
+{{--                        <ol class="carousel-indicators">--}}
+{{--                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>--}}
+{{--                            <li data-target="#myCarousel" data-slide-to="1"></li>--}}
+{{--                            <li data-target="#myCarousel" data-slide-to="2"></li>--}}
+{{--                        </ol>--}}
+{{--                        <div class="carousel-inner" role="listbox">--}}
+{{--                            <div class="item active">--}}
+{{--                                <div class="single-review">--}}
+{{--                                    <div class="review-text">--}}
+{{--                                        <p>Lorem ipsum dolor sit amet, conssadipscing elitr, sed diam nonumy eirmod--}}
+{{--                                            tempvidunt ut labore et dolore magna aliquyam erat,sed diam voluptua. At--}}
+{{--                                            vero eos et accusam justo duo dolores et ea rebum.gubergren no sea takimata--}}
+{{--                                            magna aliquyam eratma</p>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="author-id">--}}
+{{--                                        <img src="/img/author.png" alt="">--}}
 
-                                        <div class="author-text">
-                                            <h4>Sophia</h4>
+{{--                                        <div class="author-text">--}}
+{{--                                            <h4>Sophia</h4>--}}
 
-                                            <h4>Client, Tech</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="single-review">
-                                    <div class="review-text">
-                                        <p>Lorem ipsum dolor sit amet, conssadipscing elitr, sed diam nonumy eirmod
-                                            tempvidunt ut labore et dolore magna aliquyam erat,sed diam voluptua. At
-                                            vero eos et accusam justo duo dolores et ea rebum.gubergren no sea takimata
-                                            magna aliquyam eratma</p>
-                                    </div>
-                                    <div class="author-id">
-                                        <img src="/img/author.png" alt="">
+{{--                                            <h4>Client, Tech</h4>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div class="item">--}}
+{{--                                <div class="single-review">--}}
+{{--                                    <div class="review-text">--}}
+{{--                                        <p>Lorem ipsum dolor sit amet, conssadipscing elitr, sed diam nonumy eirmod--}}
+{{--                                            tempvidunt ut labore et dolore magna aliquyam erat,sed diam voluptua. At--}}
+{{--                                            vero eos et accusam justo duo dolores et ea rebum.gubergren no sea takimata--}}
+{{--                                            magna aliquyam eratma</p>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="author-id">--}}
+{{--                                        <img src="/img/author.png" alt="">--}}
 
-                                        <div class="author-text">
-                                            <h4>Sophia</h4>
+{{--                                        <div class="author-text">--}}
+{{--                                            <h4>Sophia</h4>--}}
 
-                                            <h4>Client, Tech</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="single-review">
-                                    <div class="review-text">
-                                        <p>Lorem ipsum dolor sit amet, conssadipscing elitr, sed diam nonumy eirmod
-                                            tempvidunt ut labore et dolore magna aliquyam erat,sed diam voluptua. At
-                                            vero eos et accusam justo duo dolores et ea rebum.gubergren no sea takimata
-                                            magna aliquyam eratma</p>
-                                    </div>
-                                    <div class="author-id">
-                                        <img src="/img/author.png" alt="">
+{{--                                            <h4>Client, Tech</h4>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div class="item">--}}
+{{--                                <div class="single-review">--}}
+{{--                                    <div class="review-text">--}}
+{{--                                        <p>Lorem ipsum dolor sit amet, conssadipscing elitr, sed diam nonumy eirmod--}}
+{{--                                            tempvidunt ut labore et dolore magna aliquyam erat,sed diam voluptua. At--}}
+{{--                                            vero eos et accusam justo duo dolores et ea rebum.gubergren no sea takimata--}}
+{{--                                            magna aliquyam eratma</p>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="author-id">--}}
+{{--                                        <img src="/img/author.png" alt="">--}}
 
-                                        <div class="author-text">
-                                            <h4>Sophia</h4>
+{{--                                        <div class="author-text">--}}
+{{--                                            <h4>Sophia</h4>--}}
 
-                                            <h4>Client, Tech</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+{{--                                            <h4>Client, Tech</h4>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
                 </aside>
             </div>
@@ -220,11 +190,11 @@
 
                     <div class="custom-post">
                         <div>
-                            <a href="#"><img src="/img/footer-img.png" alt=""></a>
+                            <a href="/"><img src="/img/footer-img.png" alt=""></a>
                         </div>
                         <div>
                             <a href="#" class="text-uppercase">Home is peaceful Place</a>
-                            <span class="p-date">February 15, 2016</span>
+                            <span class="p-date"></span>
                         </div>
                     </div>
                 </aside>
@@ -235,9 +205,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="text-center">&copy; 2017 <a href="#">Blog, </a> Designed with <i
-                                class="fa fa-heart"></i> by <a href="#">Marlin</a>
-                    </div>
+                    <div class="text-center">&copy; 2020 <a href="#">Blog</a></div>
                 </div>
             </div>
         </div>
@@ -245,5 +213,6 @@
 </footer>
 <!-- js files -->
 <script src="/js/front.js"></script>
+<script type="text/javascript" src="/js/gallery.js"></script>
 </body>
 </html>

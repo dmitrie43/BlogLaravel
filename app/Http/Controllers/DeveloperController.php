@@ -12,6 +12,7 @@ class DeveloperController extends Controller
     }
 
     public function index() {
-        return view('developer.index');
+        return 'В разработке';
+        //return view('developer.index');
     }
 }

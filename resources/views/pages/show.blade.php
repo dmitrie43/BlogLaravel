@@ -13,7 +13,9 @@
                     @endif
                     <article class="post">
                         <div class="post-thumb">
-                            <a href="{{route('post.show', $post->slug)}}"><img src="{{$post->getImage()}}" alt=""></a>
+                            <a href="{{route('post.show', $post->slug)}}">
+                                <img style="width: 100%; height: auto;" src="{{$post->getImage()}}" alt="">
+                            </a>
                         </div>
                         <div class="post-content">
                             <header class="entry-header text-center text-uppercase">

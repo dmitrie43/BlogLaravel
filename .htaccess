@@ -1,3 +1,15 @@
-#RewriteEngine on
-#RewriteCond %{REQUEST_URI} !^public
-#RewriteRule ^(.*)$ public/$1 [L]
+RewriteEngine on 
+
+RewriteCond %{HTTP_HOST} ^(www.)?q90847r7.beget.tech$ 
+
+RewriteCond %{REQUEST_URI} !^/public/ 
+
+RewriteCond %{REQUEST_FILENAME} !-f 
+
+RewriteCond %{REQUEST_FILENAME} !-d 
+
+RewriteRule ^(.*)$ /public/$1 
+
+RewriteCond %{HTTP_HOST} ^(www.)?q90847r7.beget.tech$ 
+
+RewriteRule ^(/)?$ public/index.php [L]

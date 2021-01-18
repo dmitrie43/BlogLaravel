@@ -139,8 +139,11 @@ class Post extends Model
     }
 
     public function getImage() {
-        if ($this->image == null) { return '/img/no-image.png'; }
-        return '/uploads/' . $this->image;
+        $path = '/storage/app/uploads/';
+        if ($this->image == null) {
+            return $path.'no-image.png';
+        }
+        return $path.$this->image;
     }
 
     public function getCategoryTitle() {

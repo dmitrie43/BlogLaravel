@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Support\Facades\Auth;
 use \Storage;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -66,7 +67,9 @@ class User extends Authenticatable
 
     public function uploadAvatar($image)
     {
-        if ($image == null) {return;}
+        if ($image == null) {
+            return;
+        }
         $this->removeAvatar();
         $filename = str_random(10) . '.' . $image->extension();
         $image->storeAs('uploads', $filename);
@@ -81,8 +84,11 @@ class User extends Authenticatable
     }
 
     public function getImage() {
-        if ($this->avatar == null) { return '/img/no-image.png'; }
-        return '/uploads/' . $this->avatar;
+        $path = '/storage/app/uploads/';
+        if ($this->avatar == null) {
+            return $path.'no-image.png';
+        }
+        return $path.$this->avatar;
     }
 
     public function makeAdmin() {
@@ -95,8 +101,8 @@ class User extends Authenticatable
         $this->save();
     }
 
-    public function toggleAdmin($value) {
-        if($value == null) {
+    public function toggleAdmin() {
+        if($this->is_admin == 1) {
             return $this->makeNormal();
         }
         return $this->makeAdmin();
@@ -105,6 +111,18 @@ class User extends Authenticatable
     public function banned() {
         $this->status = 1;
         $this->save();
+    }
+
+    public static function isAdmin()
+    {
+        $authUser = Auth::user();
+        $isAdmin = false;
+        if ($authUser) {
+            $id = $authUser->getAuthIdentifier();
+            $user = self::find($id);
+            $isAdmin = $user->is_admin == 1 ? true : false;
+        }
+        return $isAdmin;
     }
 
     public function notBanned() {

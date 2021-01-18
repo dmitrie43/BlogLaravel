@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+//use Auth;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,7 @@ class AuthController extends Controller
     public function register(Request $request) {
         $this->validate($request, [
            'name' => 'required',
-           'email' => 'required|email|unique:users',
+           'email' => 'required|email',
             'password' => 'required'
         ]);
 
@@ -39,15 +40,14 @@ class AuthController extends Controller
         //Ежели неверный логин или пароль - сообщение
         //Иначе на главную страницу
 
-        if(Auth::attempt([
+        if (Auth::attempt([
            'email' => $request->get('email'),
             'password' => $request->get('password')
-        ]))
-        {
+        ])) {
             return redirect('/');
         }
 
-        return redirect()->back()->with('status', 'Неправильный логин или пароль');
+        return redirect()->back()->with('error', 'Incorrect username or password');
     }
 
     public function logout() {
